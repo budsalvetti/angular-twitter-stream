@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { WebSocketService } from './services/web-socket/web-socket.service';
 
 @Component({
   selector: 'my-app',
@@ -7,4 +8,6 @@ import { Component, VERSION } from '@angular/core';
 })
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
+
+  constructor(private webSocketService: WebSocketService){}
 }
