@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { webSocket } from 'rxjs/webSocket';
 
 @Injectable()
 export class WebSocketService {
@@ -8,7 +10,17 @@ export class WebSocketService {
   twitterStreamUrl =
     'https://api.twitter.com/2/tweets/sample/stream?tweet.fields=created_at,entities&user.fields=created_at,username,location';
 
-  constructor() {}
+  constructor() {
+
+
+const subject = webSocket('http://localhost:9000/feed');
+
+subject.subscribe({
+  next: msg => console.log('message received: ' + msg), // Called whenever there is a message from the server.
+  error: err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
+  complete: () => console.log('complete') // Called when connection is closed (for whatever reason).
+ });
+  }
 
 }
 
