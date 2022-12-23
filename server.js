@@ -15,6 +15,7 @@ const wss = new WebSocketServer({ port: 8080 });
 
 // when an attempt to connect is made to the server, a new webSocket is created
 wss.on('connection', function connection(ws) {
+    // send the newly created webSocket into the streamConnect method
     streamConnect(0,ws);
 });
 
@@ -35,7 +36,7 @@ function streamConnect(retryAttempt, webSocket) {
       try {
         const json = JSON.parse(data);
         console.log(json);
-        //web socket will send data back to client
+        //webSocket will send data back to client
         webSocket.send(data.toString());
         // A successful connection resets retry count.
         retryAttempt = 0;
