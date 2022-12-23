@@ -1,38 +1,33 @@
 // Open a live stream of roughly 1% random sample of publicly available Tweets
 // https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/quick-start
 
-const express = require('express');
-const needle = require('needle');
-const app = express();
-const PORT = process.env.PORT || 9000;
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-app.get('/feed', async (req, res) => {
-  try {
-    const response = streamConnect(0);
-    res.stream = response;
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
+import { WebSocketServer } from 'ws'
+import needle from 'needle';
+const streamURL = 'https://api.twitter.com/2/tweets/sample/stream';
 
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
 // export BEARER_TOKEN='YOUR-TOKEN'
-const token =
-  'AAAAAAAAAAAAAAAAAAAAALGIkgEAAAAAuAf5xzhlwnIdGbEzUosVrRSY5os%3DRLMWue63Vjpz6Ngiw2mJmrogzCzySRyescdvQrQfQjHOXL4fYu';
+const token = 'AAAAAAAAAAAAAAAAAAAAALGIkgEAAAAAuAf5xzhlwnIdGbEzUosVrRSY5os%3DRLMWue63Vjpz6Ngiw2mJmrogzCzySRyescdvQrQfQjHOXL4fYu';
 
-const streamURL = 'https://api.twitter.com/2/tweets/sample/stream';
+//create the web socket server
+const wss = new WebSocketServer({ port: 8080 });
 
-function streamConnect(retryAttempt) {
+// when an attempt to connect is made to the server, a new webSocket is created
+wss.on('connection', function connection(ws) {
+    streamConnect(0,ws);
+});
+
+
+
+function streamConnect(retryAttempt, webSocket) {
+
   const stream = needle.get(streamURL, {
     headers: {
       'User-Agent': 'v2SampleStreamJS',
       Authorization: `Bearer ${token}`,
     },
-    timeout: 20000,
+    timeout: 20000
   });
 
   stream
@@ -40,6 +35,8 @@ function streamConnect(retryAttempt) {
       try {
         const json = JSON.parse(data);
         console.log(json);
+        //web socket will send data back to client
+        webSocket.send(data.toString());
         // A successful connection resets retry count.
         retryAttempt = 0;
       } catch (e) {
@@ -68,9 +65,8 @@ function streamConnect(retryAttempt) {
         // will increase if the client cannot reconnect to the stream.
         setTimeout(() => {
           console.warn('A connection error occurred. Reconnecting...');
-          streamConnect(++retryAttempt);
+          streamConnect(++retryAttempt, webSocket);
         }, 2 ** retryAttempt);
       }
     });
-  return stream;
 }

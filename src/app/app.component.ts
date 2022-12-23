@@ -6,8 +6,10 @@ import { WebSocketService } from './services/web-socket/web-socket.service';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent  {
-  name = 'Angular ' + VERSION.major;
+export class AppComponent {
+    name = 'Angular ' + VERSION.major;
 
-  constructor(private webSocketService: WebSocketService){}
+    constructor(private webSocketService: WebSocketService) {}
+
+
 }
