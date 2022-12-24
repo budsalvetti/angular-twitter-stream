@@ -1,6 +1,7 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { WebSocketService } from './services/web-socket/web-socket.service';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {select, Store } from "@ngrx/store";
 import { twitterDataSelector} from "./app.selectors";
 import {TwitterDataModel} from "./model/twitter-data.model";
@@ -13,13 +14,14 @@ import {TwitterDataModel} from "./model/twitter-data.model";
 export class AppComponent implements OnInit {
     name = 'Angular ' + VERSION.major;
 
-    twitterData$: Observable<TwitterDataModel>;
+    twitterData$: Observable<string>;
 
     constructor(private webSocketService: WebSocketService, private storeService: Store<any>) {}
 
 
     ngOnInit(){
-        this.twitterData$ = this.storeService.pipe(select(twitterDataSelector));
+        this.twitterData$ = this.storeService.pipe(select(twitterDataSelector),
+                                                    map( val => JSON.stringify(val)));
     }
 
 

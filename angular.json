@@ -3,198 +3,122 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "demo": {
+    "angular-ngrx-course": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
-      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/demo",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
+              "budgets": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "demo:build"
+            "browserTarget": "angular-ngrx-course:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo:build:production"
+              "browserTarget": "angular-ngrx-course:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo:build"
+            "browserTarget": "angular-ngrx-course:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "styles.css"
-            ],
             "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+            "styles": [
+              "src/styles.scss"
             ],
-            "exclude": [
-              "**/node_modules/**"
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
             ]
           }
         }
       }
     },
-    "buds-ang-15-app": {
+    "angular-ngrx-course-e2e": {
+      "root": "",
+      "sourceRoot": "",
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/buds-ang-15-app",
-      "sourceRoot": "projects/buds-ang-15-app/src",
-      "prefix": "app",
       "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "outputPath": "dist/buds-ang-15-app",
-            "index": "projects/buds-ang-15-app/src/index.html",
-            "main": "projects/buds-ang-15-app/src/main.ts",
-            "polyfills": "projects/buds-ang-15-app/src/polyfills.ts",
-            "tsConfig": "projects/buds-ang-15-app/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/buds-ang-15-app/src/favicon.ico",
-              "projects/buds-ang-15-app/src/assets"
-            ],
-            "styles": [
-              "projects/buds-ang-15-app/src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/buds-ang-15-app/src/environments/environment.ts",
-                  "with": "projects/buds-ang-15-app/src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "buds-ang-15-app:build:production"
-            },
-            "development": {
-              "browserTarget": "buds-ang-15-app:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "buds-ang-15-app:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/buds-ang-15-app/src/test.ts",
-            "polyfills": "projects/buds-ang-15-app/src/polyfills.ts",
-            "tsConfig": "projects/buds-ang-15-app/tsconfig.spec.json",
-            "karmaConfig": "projects/buds-ang-15-app/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/buds-ang-15-app/src/favicon.ico",
-              "projects/buds-ang-15-app/src/assets"
-            ],
-            "styles": [
-              "projects/buds-ang-15-app/src/styles.scss"
-            ],
-            "scripts": []
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "angular-ngrx-course:serve"
           }
         }
       }
     }
   },
-  "defaultProject": "demo"
+  "schematics": {
+    "@ngrx/schematics:component": {
+      "prefix": "",
+      "styleext": "scss"
+    },
+    "@ngrx/schematics:directive": {
+      "prefix": ""
+    }
+  },
+  "cli": {
+    "analytics": "78da76fb-38f9-4848-a7fe-1767a6672d4a",
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
+  }
 }

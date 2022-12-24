@@ -17,6 +17,7 @@ export class WebSocketService {
         subject$.subscribe({
             next: (msg) => {
                 console.log('message received: ' + JSON.stringify(msg));
+                msgCount++;
                 this.store.dispatch(AppActions.twitterDataLoaded({twitterData: []}));
 
             }, // Called whenever there is a message from the server.
