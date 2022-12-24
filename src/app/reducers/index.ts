@@ -7,11 +7,11 @@ export interface AppState {}
 const initialAppState: AppState = {};
 
 export interface TwitterDataState {
-    twitterData: any[]
+    twitterData: string[]
 }
 
 //set initial state of twitter data
-export const initialTwitterDataState: TwitterDataState = {twitterData: []};
+export const initialTwitterDataState: TwitterDataState = {twitterData: undefined};
 
 // when 'twitterDataLoaded' action is dispatched we will update the store with the new data
 export const twitterDataReducer = createReducer(initialTwitterDataState,

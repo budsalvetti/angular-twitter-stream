@@ -18,7 +18,7 @@ export class WebSocketService {
             next: (msg) => {
                 console.log('message received: ' + JSON.stringify(msg));
                 msgCount++;
-                this.store.dispatch(AppActions.twitterDataLoaded({twitterData: []}));
+                this.store.dispatch(AppActions.twitterDataLoaded({twitterData: [JSON.stringify(msg)] }));
 
             }, // Called whenever there is a message from the server.
             error: err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
