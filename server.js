@@ -3,7 +3,7 @@
 
 import { WebSocketServer } from 'ws'
 import needle from 'needle';
-const streamURL = 'https://api.twitter.com/2/tweets/sample/stream';
+const streamURL = 'https://api.twitter.com/2/tweets/sample/stream?tweet.fields=created_at,entities,geo&expansions=author_id,geo.place_id&user.fields=created_at,username,location,description';
 
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:

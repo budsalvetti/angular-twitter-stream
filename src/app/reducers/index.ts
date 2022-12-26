@@ -7,7 +7,7 @@ export interface AppState {}
 const initialAppState: AppState = {};
 
 export interface TwitterDataState {
-    twitterData: string[]
+    twitterData: object[]
 }
 
 //set initial state of twitter data
