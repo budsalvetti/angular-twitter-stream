@@ -10,7 +10,7 @@ export class WebSocketService {
 
     readonly maxRecordCount = 100;
     readonly entitiesKey = 'entities';
-    readonly hashTagsKey = 'hashTags';
+    readonly hashTagsKey = 'hashtags';
 
     constructor(private store: Store) {
 
@@ -37,7 +37,12 @@ export class WebSocketService {
                                 }
 
                                 // see if elon is is mentioned in a hash tag increment the tweet count
-                                if (hashTags && hashTags['elon']) {
+                                // if (hashTags && hashTags.find(tagObj => tagObj.tag.toLowerCase() === 'elon')) {
+                                //     timeCountMap[createdTime]++;
+                                // }
+
+                                // see if tweet has any hashtags
+                                if (hashTags) {
                                     timeCountMap[createdTime]++;
                                 }
 
