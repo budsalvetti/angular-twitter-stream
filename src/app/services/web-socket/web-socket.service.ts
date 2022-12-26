@@ -28,7 +28,7 @@ export class WebSocketService {
 
                                 const hashTags = tweetData[this.entitiesKey] && tweetData[this.entitiesKey][this.hashTagsKey];
 
-                                let createdTime = tweet['created_at'];
+                                let createdTime = tweetData['created_at'];
 
                                 //if createdTimeStamp is not in the map then add the entry with a value of 0
                                 if (!timeCountMap[createdTime]) {

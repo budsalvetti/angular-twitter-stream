@@ -22,14 +22,6 @@ export class AppComponent implements OnInit {
     ngOnInit(){
         this.twitterData$ = this.storeService.pipe(select(twitterDataSelector),
                                                     map( val => {
-
-                                                        if(Array.isArray(val.twitterData)){
-                                                            for(let tweet of val.twitterData){
-                                                                const timeStamp = tweet['data']['created_at'];
-                                                                console.log(timeStamp);
-                                                            }
-                                                        }
-
                                                         return JSON.stringify(val.twitterData);
                                                     }));
     }
