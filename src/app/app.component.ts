@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {select, Store } from "@ngrx/store";
 import { twitterDataSelector} from "./app.selectors";
-import {TwitterDataModel} from "./model/twitter-data.model";
 
 @Component({
   selector: 'my-app',

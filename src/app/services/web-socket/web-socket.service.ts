@@ -3,6 +3,7 @@ import {Observable, bufferCount, bufferTime, map} from "rxjs";
 import {webSocket} from 'rxjs/webSocket';
 import {Store} from "@ngrx/store";
 import * as AppActions from '../../app.actions';
+import {TwitterDataModel} from "../../model/twitter-data.model";
 
 @Injectable()
 export class WebSocketService {
@@ -58,7 +59,7 @@ export class WebSocketService {
                         })).subscribe({
                             next: (timeSeriesArray) => {
 
-                            this.store.dispatch(AppActions.twitterDataLoaded({twitterData: timeSeriesArray as object[]}));
+                            this.store.dispatch(AppActions.twitterDataLoaded({twitterData: timeSeriesArray} as TwitterDataModel));
 
                             }, // Called whenever there is a message from the server.
                             error: err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
