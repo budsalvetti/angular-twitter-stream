@@ -36,11 +36,6 @@ export class WebSocketService {
                                     timeCountMap[createdTime] = 0;
                                 }
 
-                                // see if elon is is mentioned in a hash tag increment the tweet count
-                                // if (hashTags && hashTags.find(tagObj => tagObj.tag.toLowerCase() === 'elon')) {
-                                //     timeCountMap[createdTime]++;
-                                // }
-
                                 // see if tweet has any hashtags
                                 if (hashTags) {
                                     timeCountMap[createdTime]++;

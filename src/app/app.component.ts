@@ -1,11 +1,12 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { WebSocketService } from './services/web-socket/web-socket.service';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {select, Store } from "@ngrx/store";
 import { twitterDataSelector} from "./app.selectors";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { single } from './mock-chart-data';
+import {TwitterDataModel} from "./model/twitter-data.model";
 
 @Component({
   selector: 'my-app',
@@ -51,11 +52,7 @@ export class AppComponent implements OnInit {
         this.twitterData$ = this.storeService.pipe(select(twitterDataSelector),
                                                     map( val => {
                                                         if(this.streamToggle) {
-
-                                                            //console.log('record length is ' + val.twitterData.length);
-
                                                             return val.twitterData;
-
                                                         }
                                                     }));
     }
