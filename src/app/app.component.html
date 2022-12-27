@@ -1,6 +1,6 @@
 
 
-<ngx-charts-bar-vertical
+<ngx-charts-bar-vertical class="ngx-charts-bar-vertical"
         [view]="view"
         [scheme]="colorScheme"
         [results]="twitterData$ | async"
@@ -14,3 +14,5 @@
         [yAxisLabel]="yAxisLabel"
         (select)="onSelect($event)">
 </ngx-charts-bar-vertical>
+
+<button id="toggle-stream-btn" (click)="toggleStream($event)">Toggle Stream</button>

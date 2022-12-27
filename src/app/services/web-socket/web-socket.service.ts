@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, bufferCount, bufferTime, map} from "rxjs";
+import {Observable, bufferCount, bufferTime, map, take} from "rxjs";
 import {webSocket} from 'rxjs/webSocket';
 import {Store} from "@ngrx/store";
 import * as AppActions from '../../app.actions';
@@ -16,10 +16,10 @@ export class WebSocketService {
 
         const subject$ = webSocket('ws://localhost:8080');
 
-        const timeCountMap = {};
 
-        subject$.pipe(bufferCount(this.maxRecordCount, this.maxRecordCount),
+        subject$.pipe(bufferCount(200, 200),
                       map((buffer) => {
+                            const timeCountMap = {};
 
                             let timeSeriesArray = [];
 

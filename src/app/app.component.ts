@@ -13,7 +13,6 @@ import { single } from './mock-chart-data';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent implements OnInit {
-    name = 'Angular ' + VERSION.major;
 
     twitterData$: Observable<object[]>;
 
@@ -40,6 +39,9 @@ export class AppComponent implements OnInit {
         domain: ['#7c95fc', '#042cbc', '#444187', '#021f96']
     };
 
+    //if streamToggle is true then the data stream will be turned 'on' otherwise it will be 'turned off' if false
+    streamToggle = true;
+
     onSelect(event) {
         console.log(event);
     }
@@ -48,8 +50,18 @@ export class AppComponent implements OnInit {
     ngOnInit(){
         this.twitterData$ = this.storeService.pipe(select(twitterDataSelector),
                                                     map( val => {
-                                                        return val.twitterData;
+                                                        if(this.streamToggle) {
+
+                                                            //console.log('record length is ' + val.twitterData.length);
+
+                                                            return val.twitterData;
+
+                                                        }
                                                     }));
+    }
+
+    toggleStream(evt){
+        this.streamToggle = !this.streamToggle;
     }
 
 
