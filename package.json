@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-ws-server":"node server.js",
+    "start-ws-server": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -31,11 +31,12 @@
     "@ngrx/router-store": "^15.0.0",
     "@ngrx/store": "^15.0.0",
     "@ngrx/store-devtools": "^15.0.0",
-    "ws": "^8.4.0",
+    "@swimlane/ngx-charts": "^20.1.2",
     "core-js": "^2.4.1",
     "cors": "^2.8.5",
     "express": "^4.16.2",
     "tslib": "^2.0.0",
+    "ws": "^8.4.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

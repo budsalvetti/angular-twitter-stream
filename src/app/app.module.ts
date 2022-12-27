@@ -4,7 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {WebSocketService} from './services/web-socket/web-socket.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
-import {HelloComponent} from './hello.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 //NgRx imports
 import {reducers} from './reducers';
@@ -16,6 +17,8 @@ import {EffectsModule} from '@ngrx/effects';
     imports: [BrowserModule,
         HttpClientModule,
         FormsModule,
+        BrowserAnimationsModule,
+        NgxChartsModule,
         StoreModule.forRoot(reducers, {
             runtimeChecks: {
                 strictStateImmutability: true,
@@ -25,7 +28,7 @@ import {EffectsModule} from '@ngrx/effects';
             }
         }),
         EffectsModule.forRoot([])],
-    declarations: [AppComponent, HelloComponent],
+    declarations: [AppComponent],
     providers: [WebSocketService],
     bootstrap: [AppComponent]
 })

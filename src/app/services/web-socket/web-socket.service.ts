@@ -53,8 +53,8 @@ export class WebSocketService {
                             for (let timeStamp of sortedTimeStampArray) {
 
                                 const timeSeriesObject = {};
-                                timeSeriesObject['timeStamp'] = timeStamp;
-                                timeSeriesObject['tweetCount'] = timeCountMap[timeStamp];
+                                timeSeriesObject['name'] = timeStamp;
+                                timeSeriesObject['value'] = timeCountMap[timeStamp];
 
                                 timeSeriesArray.push(timeSeriesObject);
                             }
