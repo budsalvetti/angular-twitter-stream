@@ -61,7 +61,14 @@ export class AppComponent implements OnInit {
                                                     }));
     }
 
-    toggleStream(evt){
+    /**
+     * toggleStream
+     *
+     * @description
+     * freezes the chart view by virtue of
+     * settting a boolean which allows the stream observable to return a cached response from the observable
+     */
+    toggleStream(): void{
         this.streamIsOn = !this.streamIsOn;
     }
 

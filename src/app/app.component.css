@@ -1,8 +1,12 @@
-p {
-  font-family: Lato;
+
+.toggleButton {
+    background-color: #838383;
+    border-radius: 3px;
+    color: lightgrey;
 }
 
-.ngx-charts-bar-vertical{
-  background-color: #000000;
-  color: lightgrey;
+.chart-container{
+    padding: 51px;
 }
+
+
