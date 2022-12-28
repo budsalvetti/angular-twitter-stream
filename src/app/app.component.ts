@@ -1,10 +1,9 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { WebSocketService } from './services/web-socket/web-socket.service';
-import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {Observable, audit, of, interval} from 'rxjs';
+import {map } from 'rxjs/operators';
 import {select, Store } from "@ngrx/store";
 import { twitterDataSelector} from "./app.selectors";
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { single } from './mock-chart-data';
 import {TwitterDataModel} from "./model/twitter-data.model";
 
@@ -34,31 +33,36 @@ export class AppComponent implements OnInit {
     showXAxisLabel = true;
     xAxisLabel = 'Tweets Per Second';
     showYAxisLabel = true;
-    yAxisLabel = 'Tweets with hash tags';
+    yAxisLabel = 'Number Of Tweets with hash tags';
 
     colorScheme = {
         domain: ['#7c95fc', '#042cbc', '#444187', '#021f96']
     };
 
-    //if streamToggle is true then the data stream will be turned 'on' otherwise it will be 'turned off' if false
-    streamToggle = true;
+    streamIsOn = true;
+
+    cachedResponse: TwitterDataModel;
 
     onSelect(event) {
         console.log(event);
     }
 
-
     ngOnInit(){
+        // when the stream is on we will consume from the regular observable else from the the last emitted value
+        // of the source observable this will allow us to freeze the chart to current
         this.twitterData$ = this.storeService.pipe(select(twitterDataSelector),
-                                                    map( val => {
-                                                        if(this.streamToggle) {
-                                                            return val.twitterData;
-                                                        }
+                                                    map( data =>  {  // if the stream is turned on we will emit latest, if it is turned off then we will emit a cached value
+                                                                            if(this.streamIsOn){
+                                                                                this.cachedResponse = data;
+                                                                                return  data.twitterData
+                                                                            } else {
+                                                                                return this.cachedResponse.twitterData;
+                                                                            }
                                                     }));
     }
 
     toggleStream(evt){
-        this.streamToggle = !this.streamToggle;
+        this.streamIsOn = !this.streamIsOn;
     }
 
 
