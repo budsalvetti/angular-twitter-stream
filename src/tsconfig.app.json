@@ -23,5 +23,8 @@
     "enableIvy": true,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
+  "exclude": [
+    "**/*.spec.ts"
+  ]
 }
