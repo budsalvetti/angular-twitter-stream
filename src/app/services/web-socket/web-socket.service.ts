@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, bufferCount, bufferTime, map, take} from "rxjs";
+import {bufferCount, map} from "rxjs";
 import {webSocket} from 'rxjs/webSocket';
 import {Store} from "@ngrx/store";
 import * as AppActions from '../../app.actions';
@@ -48,7 +48,9 @@ export class WebSocketService {
                             for (let timeStamp of sortedTimeStampArray) {
 
                                 const timeSeriesObject = {};
-                                timeSeriesObject['name'] = timeStamp;
+                                const date = new Date(timeStamp);
+
+                                timeSeriesObject['name'] = date.getMinutes() + ':' + date.getSeconds();
                                 timeSeriesObject['value'] = timeCountMap[timeStamp];
 
                                 timeSeriesArray.push(timeSeriesObject);
