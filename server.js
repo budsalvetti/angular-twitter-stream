@@ -1,8 +1,12 @@
 // Open a live stream of roughly 1% random sample of publicly available Tweets
 // https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/quick-start
 
-import { WebSocketServer } from 'ws'
-import needle from 'needle';
+const ws = require('ws');
+const WebSocketServer = ws.WebSocketServer;
+const needle = require('needle');
+
+
+
 const streamURL = 'https://api.twitter.com/2/tweets/sample/stream?tweet.fields=created_at,entities,geo&expansions=author_id,geo.place_id&user.fields=created_at,username,location,description';
 
 // The code below sets the bearer token from your environment variables
