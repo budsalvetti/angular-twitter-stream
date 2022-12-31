@@ -1,29 +1,29 @@
 # angular-twitter-stream
 
-To Run:
-
 Angular Client Used: @angular/cli@15
 Node Version Used: 16.18.1
 
+
+To Run:
 # Install Dependencies:
 
-  a) open command prompt and navigate to project root folder
+  1) open command prompt and navigate to project root folder
 
-  b) in command prompt run the following command: 'npm install --force'
+  2) in command prompt run the following command: 'npm install --force'
      **note that the '--force' argument must be passed due to some dependency conflicts.
 
 
 # Start The Web Socket Server:
 
-  a) run the following command in the command prompt:
+  run the following command in the command prompt:
    'npm run start-ws-server'
 
 # Start the Application Server:
 
-  a) open a new command prompt in tne project root folder and run the following command:
+  open a new command prompt in tne project root folder and run the following command:
    'npm start'
 
 
-#4 View The Application In A Browser:
+# View The Application In A Browser:
 
- a) open a browser and navigate to 'localhost:4200'
+  open a browser and navigate to 'localhost:4200'
