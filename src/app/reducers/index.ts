@@ -1,7 +1,6 @@
 import * as AppActions  from '../app.actions'
 import {ActionReducer, ActionReducerMap, createReducer, on} from '@ngrx/store';
 export const TwitterDataFeatureKey = 'twitterData';
-import {TwitterDataModel} from "../model/twitter-data.model";
 
 export interface AppState {}
 const initialAppState: AppState = {};

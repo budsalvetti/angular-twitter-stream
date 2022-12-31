@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-ngrx-course": {
+    "angular-twitter-stream": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-ngrx-course:build"
+            "browserTarget": "angular-twitter-stream:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-ngrx-course:build:production"
+              "browserTarget": "angular-twitter-stream:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-ngrx-course:build"
+            "browserTarget": "angular-twitter-stream:build"
           }
         },
         "test": {
@@ -86,12 +86,13 @@
             "assets": [
               "src/assets",
               "src/favicon.ico"
-            ]
+            ],
+            "sourceMap": true
           }
         }
       }
     },
-    "angular-ngrx-course-e2e": {
+    "angular-twitter-stream-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -100,7 +101,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "angular-ngrx-course:serve"
+            "devServerTarget": "angular-twitter-stream:serve"
           }
         }
       }

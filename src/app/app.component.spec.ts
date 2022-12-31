@@ -1,9 +1,9 @@
 import { WebSocketService} from "./services/web-socket/web-socket.service";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { ComponentFixture, TestBed, fakeAsync, flush, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { cold } from 'jasmine-marbles';
+import {cold, hot} from 'jasmine-marbles';
 
 describe('AppComponent', () => {
 
@@ -11,7 +11,7 @@ describe('AppComponent', () => {
     let component: AppComponent;
     let store: MockStore;
     let el;
-    const initialState = { twitterData: [] };
+    const initialState = {twitterData: { twitterData: [] }};
 
     beforeEach(waitForAsync(() => {
 
@@ -38,15 +38,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-    it('should return true if the user state is logged in', () => {
-
+    it('should have an observable that outputs twitter data', () => {
         const rtnTwitterData = [{"name":"36:18","value":1},{"name":"36:19","value":5},{"name":"36:20","value":9},{"name":"36:21","value":3},{"name":"36:22","value":12},{"name":"36:23","value":5}];
-        store.setState({ twitterData: rtnTwitterData });
-
-        const expected = cold('(a|)', { a: rtnTwitterData });
-
+        store.setState({ twitterData: {twitterData: rtnTwitterData }});
         component.ngOnInit();
-
+        const expected = cold('(a)', { a: rtnTwitterData });
         expect(component.twitterData$).toBeObservable(expected);
     });
 
