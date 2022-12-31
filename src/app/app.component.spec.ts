@@ -16,11 +16,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular15-twitter-stream'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular15-twitter-stream');
-  });
+  // it(`should have as title 'angular15-twitter-stream'`, () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   const app = fixture.componentInstance;
+  //   expect(app.title).toEqual('angular15-twitter-stream');
+  // });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);

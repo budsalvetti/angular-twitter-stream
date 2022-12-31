@@ -1,10 +1,9 @@
-import { Component, OnInit, VERSION } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { WebSocketService } from './services/web-socket/web-socket.service';
-import {Observable, audit, of, interval} from 'rxjs';
+import {Observable, audit} from 'rxjs';
 import {map } from 'rxjs/operators';
 import {select, Store } from "@ngrx/store";
 import { twitterDataSelector} from "./app.selectors";
-import { single } from './mock-chart-data';
 import {TwitterDataModel} from "./model/twitter-data.model";
 
 @Component({
@@ -17,11 +16,7 @@ export class AppComponent implements OnInit {
     twitterData$: Observable<object[]>;
 
     constructor(private webSocketService: WebSocketService, private storeService: Store<any>) {
-        Object.assign(this, { single });
     }
-
-    single: any[];
-    multi: any[];
 
     view: any[] = [700, 400];
 
