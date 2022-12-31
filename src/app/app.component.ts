@@ -5,6 +5,7 @@ import {map } from 'rxjs/operators';
 import {select, Store } from "@ngrx/store";
 import { twitterDataSelector} from "./app.selectors";
 import {TwitterDataModel} from "./model/twitter-data.model";
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'my-app',
@@ -47,6 +48,7 @@ export class AppComponent implements OnInit {
         // of the source observable this will allow us to freeze the chart to current
         this.twitterData$ = this.storeService.pipe(select(twitterDataSelector),
                                                     map( data =>  {  // if the stream is turned on we will emit latest, if it is turned off then we will emit a cached value
+                                                                            console.log(JSON.stringify(data.twitterData));
                                                                             if(this.streamIsOn){
                                                                                 this.cachedResponse = data;
                                                                                 return  data.twitterData
