@@ -3,8 +3,8 @@
 Angular Client Used: @angular/cli@15
 Node Version Used: 16.18.1
 
+To Run: please execute the following steps in the order that they are presented.
 
-To Run:
 # Install Dependencies:
 
   1) open command prompt and navigate to project root folder
