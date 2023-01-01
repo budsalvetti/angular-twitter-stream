@@ -27,3 +27,10 @@ To Run: please execute the following steps in the order that they are presented.
 # View The Application In A Browser:
 
   open a browser and navigate to 'localhost:4200'
+
+
+# Run Unit Tests:
+
+ 1) open command prompt and navigate to project root folder
+
+ 2) in command prompt run the following command: 'npm test'
