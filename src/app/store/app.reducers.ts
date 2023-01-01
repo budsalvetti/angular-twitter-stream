@@ -1,4 +1,4 @@
-import * as AppActions  from '../app.actions'
+import * as AppActions  from './app.actions'
 import {ActionReducer, ActionReducerMap, createReducer, on} from '@ngrx/store';
 export const TwitterDataFeatureKey = 'twitterData';
 

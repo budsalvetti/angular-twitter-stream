@@ -3,7 +3,7 @@ import { WebSocketService } from './services/web-socket/web-socket.service';
 import {Observable, audit} from 'rxjs';
 import {map } from 'rxjs/operators';
 import {select, Store } from "@ngrx/store";
-import { twitterDataSelector} from "./app.selectors";
+import { twitterDataSelector} from "./store/app.selectors";
 import {TwitterDataModel} from "./model/twitter-data.model";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 

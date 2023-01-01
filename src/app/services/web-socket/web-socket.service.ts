@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {bufferCount, map} from "rxjs";
 import {webSocket} from 'rxjs/webSocket';
 import {Store} from "@ngrx/store";
-import * as AppActions from '../../app.actions';
+import * as AppActions from '../../store/app.actions';
 import {TwitterDataModel} from "../../model/twitter-data.model";
 
 @Injectable()

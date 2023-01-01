@@ -26,6 +26,7 @@ describe('AppComponent', () => {
                 fixture = TestBed.createComponent(AppComponent);
                 component = fixture.componentInstance;
                 el = fixture.debugElement;
+                fixture.detectChanges();
                 store = TestBed.inject(MockStore);
             });
 
