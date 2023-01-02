@@ -1,9 +1,10 @@
-import { WebSocketService} from "./services/web-socket/web-socket.service";
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {provideMockStore, MockStore} from '@ngrx/store/testing';
 import {cold, hot} from 'jasmine-marbles';
+import {WebSocketService} from "./services/web-socket/web-socket.service";
+import {WebSocketFactoryService} from "./services/web-socket/web-socket-factory.service";
 
 describe('AppComponent', () => {
 
@@ -11,7 +12,7 @@ describe('AppComponent', () => {
     let component: AppComponent;
     let store: MockStore;
     let el;
-    const initialState = {twitterData: { twitterData: [] }};
+    const initialState = {twitterData: {twitterData: []}};
 
     beforeEach(waitForAsync(() => {
 
@@ -19,8 +20,8 @@ describe('AppComponent', () => {
             declarations: [
                 AppComponent
             ],
-            imports:[NgxChartsModule],
-            providers: [WebSocketService, provideMockStore({ initialState })]
+            imports: [NgxChartsModule],
+            providers: [WebSocketFactoryService, WebSocketService, provideMockStore({initialState})]
         }).compileComponents()
             .then(() => {
                 fixture = TestBed.createComponent(AppComponent);
@@ -33,20 +34,22 @@ describe('AppComponent', () => {
     }));
 
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-    it('should have an observable that outputs twitter data', () => {
-        const rtnTwitterData = [{"name":"36:18","value":1},{"name":"36:19","value":5},{"name":"36:20","value":9},{"name":"36:21","value":3},{"name":"36:22","value":12},{"name":"36:23","value":5}];
-        store.setState({ twitterData: {twitterData: rtnTwitterData }});
-        component.ngOnInit();
-        const expected = cold('(a)', { a: rtnTwitterData });
-        expect(component.twitterData$).toBeObservable(expected);
+    it('should create the app', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.componentInstance;
+        expect(app).toBeTruthy();
     });
 
+    it('should have an observable that outputs twitter data', () => {
+        const rtnTwitterData = [{"name": "36:18", "value": 1}, {"name": "36:19", "value": 5}, {
+            "name": "36:20",
+            "value": 9
+        }, {"name": "36:21", "value": 3}, {"name": "36:22", "value": 12}, {"name": "36:23", "value": 5}];
+        store.setState({twitterData: {twitterData: rtnTwitterData}});
+        component.ngOnInit();
+        const expected = cold('(a)', {a: rtnTwitterData});
+        expect(component.twitterData$).toBeObservable(expected);
+    });
 
 
 });

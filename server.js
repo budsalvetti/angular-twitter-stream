@@ -38,8 +38,8 @@ function streamConnect(retryAttempt, webSocket) {
   stream
     .on('data', (data) => {
       try {
-        const json = JSON.parse(data);
-        console.log(json);
+        const dataObj = JSON.parse(data);
+        console.log(JSON.stringify(dataObj));
         //webSocket will send data back to client
         webSocket.send(data.toString());
         // A successful connection resets retry count.
