@@ -5,6 +5,11 @@
     color: #000000;
 }
 
+.toggleButton[disabled]{
+    cursor: not-allowed;
+}
+
+
 .outer-container {
     padding: 51px;
 }

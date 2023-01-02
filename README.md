@@ -1,5 +1,10 @@
 # angular-twitter-stream
 
+This application uses a small web socket server that is returning samples of twitter data in a time series
+and the chart shows the number of tweets that contain hashtags per second. All data functionality is implemented
+using NgRx patterns
+
+
 Angular Client Used: @angular/cli@15
 Node Version Used: 16.18.1
 
@@ -27,6 +32,12 @@ To Run: please execute the following steps in the order that they are presented.
 # View The Application In A Browser:
 
   open a browser and navigate to 'localhost:4200'
+
+
+
+# Freeze the stream button
+
+ Clicking the 'freeze' button will toggle the stream on and off for closer inspection of the values
 
 
 # Run Unit Tests:

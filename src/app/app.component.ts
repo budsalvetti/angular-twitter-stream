@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
 
     colorScheme = {domain: ['#7c95fc', '#042cbc', '#444187', '#021f96']};
 
-
     streamIsOn = true;
 
     waitingForData = true;

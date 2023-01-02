@@ -22,10 +22,16 @@
             </div>
 
         </div>
-        <button id="toggle-stream-btn" class="toggleButton" (click)="toggleStream()"><span
+
+        <button id="toggle-stream-btn"
+                class="toggleButton"
+                [ngClass]="{}"
+                (click)="toggleStream()"
+                [disabled]="waitingForData"><span
                 *ngIf="streamIsOn">Freeze</span>
             <span *ngIf="!streamIsOn">Resume</span>
         </button>
+
     </div>
 </main>
 
