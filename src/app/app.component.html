@@ -1,22 +1,30 @@
-
 <main class="dark">
-    <div class="chart-container">
-        <ngx-charts-bar-vertical [view]="view"
-                                 [scheme]="colorScheme"
-                                 [results]="twitterData$ | async"
-                                 [gradient]="gradient"
-                                 [xAxis]="showXAxis"
-                                 [yAxis]="showYAxis"
-                                 [legend]="showLegend"
-                                 [showXAxisLabel]="showXAxisLabel"
-                                 [showYAxisLabel]="showYAxisLabel"
-                                 [xAxisLabel]="xAxisLabel"
-                                 [yAxisLabel]="yAxisLabel"
-                                 (select)="onSelect($event)">
-        </ngx-charts-bar-vertical>
+    <div class="outer-container">
+        <div class="chart-container">
 
-        <button id="toggle-stream-btn" class="toggleButton" (click)="toggleStream()"><span *ngIf="streamIsOn">Freeze</span>
-                                                                                    <span *ngIf="!streamIsOn">Resume</span>
+            <ngx-charts-bar-vertical [view]="view"
+                                     [scheme]="colorScheme"
+                                     [results]="twitterData$ | async"
+                                     [gradient]="gradient"
+                                     [xAxis]="showXAxis"
+                                     [yAxis]="showYAxis"
+                                     [legend]="showLegend"
+                                     [showXAxisLabel]="showXAxisLabel"
+                                     [showYAxisLabel]="showYAxisLabel"
+                                     [xAxisLabel]="xAxisLabel"
+                                     [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-vertical>
+
+            <div class="spinner" *ngIf="waitingForData">
+                <div class="smt-spinner-circle">
+                    <div class="smt-spinner"></div>
+                </div>
+            </div>
+
+        </div>
+        <button id="toggle-stream-btn" class="toggleButton" (click)="toggleStream()"><span
+                *ngIf="streamIsOn">Freeze</span>
+            <span *ngIf="!streamIsOn">Resume</span>
         </button>
     </div>
 </main>
