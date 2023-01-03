@@ -80,7 +80,7 @@ describe('AppComponent', () => {
         it("when invoked: should toggle the 'streamIsOn' boolean", () => {
             const beforeToggleVal = component.streamIsOn;
             component.toggleStream();
-            expect(component.streamIsOn !== beforeToggleVal);
+            expect(component.streamIsOn).not.toEqual(beforeToggleVal);
         });
 
 

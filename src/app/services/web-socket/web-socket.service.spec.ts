@@ -14,7 +14,7 @@ describe("WebSocketService", () => {
     let fakeSocket: Subject<any>;
 
 
-    const initialState = {twitterData: {twitterData: []}};
+    const initialState = {twitterData: {tweetData: []}};
 
     beforeEach(() => {
 
