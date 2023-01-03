@@ -33,6 +33,8 @@ export class WebSocketService {
      * @returns {any[]}
      */
     private chartDataMapFunc = (buffer): object[] => {
+
+        // this will a map keyed by the time the tweet was created
         const timeCountMap = {};
 
         let timeSeriesArray = [];
@@ -57,6 +59,7 @@ export class WebSocketService {
 
         }
 
+        //create an Array of sorted timeStamp entries
         const sortedTimeStampArray = Object.keys(timeCountMap).sort();
 
         for (let timeStamp of sortedTimeStampArray) {
@@ -64,6 +67,7 @@ export class WebSocketService {
             const timeSeriesObject = {};
             const date = new Date(timeStamp);
 
+            // make the timestamp more human readable in a 'minutes:seconds' format
             timeSeriesObject['name'] = date.getMinutes() + ':' + date.getSeconds();
             timeSeriesObject['value'] = timeCountMap[timeStamp];
 
