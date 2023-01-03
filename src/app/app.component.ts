@@ -5,7 +5,6 @@ import {map } from 'rxjs/operators';
 import {select, Store } from "@ngrx/store";
 import { twitterDataSelector} from "./store/app.selectors";
 import {TwitterDataModel} from "./model/twitter-data.model";
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'my-app',
@@ -46,16 +45,16 @@ export class AppComponent implements OnInit {
         this.twitterData$ = this.storeService.pipe(select(twitterDataSelector),
                                                     map( data =>  {
                                                                             //turn off the spinner if we've gotten any real data
-                                                                            if(data.twitterData){
+                                                                            if(data.tweetData){
                                                                                 this.waitingForData = false;
                                                                             }
                                                                             // if the stream is turned on we will emit latest,
                                                                              // if it is turned off then we will emit a cached value
                                                                             if(this.streamIsOn){
                                                                                 this.cachedResponse = data;
-                                                                                return  data.twitterData
+                                                                                return  data.tweetData;
                                                                             } else {
-                                                                                return this.cachedResponse.twitterData;
+                                                                                return this.cachedResponse.tweetData;
                                                                             }
                                                     }));
     }

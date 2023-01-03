@@ -1,5 +1,5 @@
 
 
 export interface TwitterDataModel {
-    twitterData: object[]
+    tweetData: object[]
 }

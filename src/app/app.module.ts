@@ -6,11 +6,9 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {StoreModule} from '@ngrx/store';
 import {reducers} from './store/app.reducers';
-import {EffectsModule} from '@ngrx/effects';
 import {WebSocketService} from './services/web-socket/web-socket.service';
 import {WebSocketFactoryService} from "./services/web-socket/web-socket-factory.service";
 
-//import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 @NgModule({
     imports: [BrowserModule,
@@ -24,8 +22,7 @@ import {WebSocketFactoryService} from "./services/web-socket/web-socket-factory.
                 strictActionSerializability: true,
                 strictStateSerializability: true
             }
-        }),
-        EffectsModule.forRoot([])],
+        })],
     declarations: [AppComponent],
     providers: [WebSocketFactoryService, WebSocketService],
     bootstrap: [AppComponent]

@@ -18,8 +18,7 @@ export class WebSocketService {
         subject$.pipe(bufferCount(200, 200),
             map(this.chartDataMapFunc)).subscribe({
             next: (timeSeriesArray: object[]) => {
-                console.log('TS - Array' + JSON.stringify(timeSeriesArray) );
-                this.store.dispatch(AppActions.twitterDataLoaded({twitterData: timeSeriesArray} as TwitterDataModel));
+                this.store.dispatch(AppActions.twitterDataLoaded({tweetData: timeSeriesArray} as TwitterDataModel));
             }, // Called whenever there is a message from the server.
             error: err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
             complete: () => console.log('complete') // Called when connection is closed (for whatever reason).

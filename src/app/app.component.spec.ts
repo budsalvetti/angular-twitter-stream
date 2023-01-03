@@ -12,7 +12,7 @@ describe('AppComponent', () => {
     let component: AppComponent;
     let store: MockStore;
     let el;
-    const initialState = {twitterData: {twitterData: []}};
+    const initialState = {twitterData: {tweetData: []}};
 
     beforeEach(waitForAsync(() => {
 
