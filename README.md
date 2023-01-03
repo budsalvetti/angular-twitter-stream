@@ -33,6 +33,8 @@ To Run: please execute the following steps in the order that they are presented.
 
   open a browser and navigate to 'localhost:4200'.
 
+  ** DO NOT RELOAD AFTER INITIAL LOAD ** as this will break the connection to the Web Socket Server.
+
 
 # Freeze the stream button
 
@@ -44,3 +46,20 @@ To Run: please execute the following steps in the order that they are presented.
  1) open command prompt and navigate to project root folder.
 
  2) in command prompt run the following command: 'npm test'.
+
+
+ # TROUBLE SHOOTING:
+
+  If the twitter data is not loading it is most likely because the application at 'localhost:4200'
+   was loaded more than once causing the web socket server to shut down as it is only designed to handle a single connection.
+
+ TO FIX:
+
+  Restart the Web Socket Server
+  1)  Open a command prompt in the project root folder
+
+  2) run the following command in the command prompt:
+      'npm run start-ws-server'.
+
+  3) reload the application at 'localhost:4200' but only once.
+
