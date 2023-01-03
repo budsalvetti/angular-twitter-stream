@@ -1,6 +1,7 @@
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {AppComponent} from './app.component';
+import { Store } from '@ngrx/store'
 import {provideMockStore, MockStore} from '@ngrx/store/testing';
 import {cold} from 'jasmine-marbles';
 import {WebSocketService} from "./services/web-socket/web-socket.service";
@@ -10,7 +11,7 @@ describe('AppComponent', () => {
 
     let fixture: ComponentFixture<AppComponent>;
     let component: AppComponent;
-    let store: MockStore;
+    let store: MockStore<{ twitterData: {tweetData: object[]} }>;
     let el;
     const initialState = {twitterData: {tweetData: []}};
 
@@ -28,7 +29,7 @@ describe('AppComponent', () => {
                 component = fixture.componentInstance;
                 el = fixture.debugElement;
                 fixture.detectChanges();
-                store = TestBed.inject(MockStore);
+                store = TestBed.get<Store>(Store);
             });
 
     }));
