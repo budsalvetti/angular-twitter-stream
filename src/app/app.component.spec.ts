@@ -40,14 +40,14 @@ describe('AppComponent', () => {
         expect(app).toBeTruthy();
     });
 
-    it('should have an observable that outputs twitter data', () => {
-        const rtnTwitterData = [{"name": "36:18", "value": 1}, {"name": "36:19", "value": 5}, {
+    it('should have an observable that outputs tweet data', () => {
+        const mockTweetData = [{"name": "36:18", "value": 1}, {"name": "36:19", "value": 5}, {
             "name": "36:20",
             "value": 9
         }, {"name": "36:21", "value": 3}, {"name": "36:22", "value": 12}, {"name": "36:23", "value": 5}];
-        store.setState({twitterData: {tweetData: rtnTwitterData}});
+        store.setState({twitterData: {tweetData: mockTweetData}});
         component.ngOnInit();
-        const expected = cold('(a)', {a: rtnTwitterData});
+        const expected = cold('(a)', {a: mockTweetData});
         expect(component.twitterData$).toBeObservable(expected);
     });
 
