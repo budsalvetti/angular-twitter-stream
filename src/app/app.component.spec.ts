@@ -45,7 +45,7 @@ describe('AppComponent', () => {
             "name": "36:20",
             "value": 9
         }, {"name": "36:21", "value": 3}, {"name": "36:22", "value": 12}, {"name": "36:23", "value": 5}];
-        store.setState({twitterData: {twitterData: rtnTwitterData}});
+        store.setState({twitterData: {tweetData: rtnTwitterData}});
         component.ngOnInit();
         const expected = cold('(a)', {a: rtnTwitterData});
         expect(component.twitterData$).toBeObservable(expected);
@@ -57,11 +57,11 @@ describe('AppComponent', () => {
             "name": "36:20",
             "value": 9
         }, {"name": "36:21", "value": 3}, {"name": "36:22", "value": 12}, {"name": "36:23", "value": 5}];
-        store.setState({twitterData: {twitterData: rtnTwitterData}});
+        store.setState({twitterData: {tweetData: rtnTwitterData}});
         component.ngOnInit();
 
         const cachedResponse = [{"name": "cached", "value": 1}];
-        component.cachedResponse = {twitterData: cachedResponse };
+        component.cachedResponse = {tweetData: cachedResponse };
         component.toggleStream();
 
         const expected = cold('(a)', {a: cachedResponse});

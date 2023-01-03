@@ -81,7 +81,7 @@ describe("WebSocketService", () => {
 
         it('should emit a properly formatted response', () => {
             const chartData = [{"name":"45:41","value":200}];
-            expect(store.dispatch).toHaveBeenCalledWith(AppActions.twitterDataLoaded({twitterData: chartData} as TwitterDataModel));
+            expect(store.dispatch).toHaveBeenCalledWith(AppActions.twitterDataLoaded({tweetData: chartData} as TwitterDataModel));
         });
 
 
